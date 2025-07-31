@@ -1,13 +1,13 @@
+
 <!DOCTYPE html>
+
 <html lang="en">
- <head>
-  <meta charset="utf-8"/>
-  <title>
-   Bigo Event Calendar – August 2025
-  </title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;display=swap" rel="stylesheet"/>
-  <style>
-   body {
+<head>
+<meta charset="utf-8"/>
+<title>Bigo Event Calendar – August 2025</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<style>
+    body {
       font-family: 'Inter', sans-serif;
       background-color: #ffffff;
       margin: 0;
@@ -50,7 +50,17 @@
       margin: 0;
       flex-grow: 1;
     }
-    .weekday-header, .calendar {
+    .weekday-header {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 12px;
+      max-width: 1200px;
+      margin: 0 auto 12px;
+      font-weight: 600;
+      color: #4B5563;
+      text-align: center;
+    }
+    .calendar {
       display: grid;
       grid-template-columns: repeat(7, 1fr);
       gap: 12px;
@@ -60,13 +70,25 @@
     .day {
       background-color: #ffffff;
       border-radius: 10px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
       padding: 10px;
       min-height: 200px;
+      overflow-y: auto;
+      transition: transform 0.2s ease;
     }
     .calendar > .day:nth-child(7n+1),
     .calendar > .day:nth-child(7n) {
       background-color: #f9fafb;
+    }
+    .day:hover {
+      transform: scale(1.02);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+    .date {
+      font-weight: 600;
+      font-size: 14px;
+      margin-bottom: 8px;
+      color: #374151;
     }
     .event {
       display: flex;
@@ -81,16 +103,6 @@
       color: #111827;
       box-shadow: 0 1px 3px rgba(0,0,0,0.1);
       transition: all 0.2s ease;
-    }
-    .event span.label {
-      font-size: 10px;
-      padding: 2px 6px;
-      border-radius: 12px;
-      background: rgba(255,255,255,0.25);
-      margin-left: 6px;
-      margin-right: 0;
-      white-space: nowrap;
-      flex-shrink: 0;
     }
     .event:hover {
       transform: scale(1.03);
@@ -107,1008 +119,86 @@
     .tier-s { background-color: #FBBF24; }
     .tier-b { background-color: #34D399; }
     .tier-c { background-color: #6EE7B7; }
+    .tier-d { background-color: #6EE7B7; }
     .tier-ph { background-color: #FED7AA; }
-    .date {
-      font-weight: 600;
-      font-size: 14px;
-      margin-bottom: 8px;
-      color: #374151;
+    .tier-ladder { background: linear-gradient(to right, #34D399, #6EE7B7); }
+    .tier-stepup { background-color: #6EE7B7; }
+    @media (max-width: 768px) {
+      .calendar, .weekday-header {
+        grid-template-columns: repeat(7, 1fr);
+        font-size: 12px;
+        gap: 6px;
+        padding: 0 8px;
+      }
+      .weekday-header {
+        display: grid;
+        text-align: center;
+        margin-bottom: 8px;
+        font-weight: 600;
+        color: #4B5563;
+      }
+      .day {
+        min-height: auto;
+        padding: 8px 6px;
+      }
+      .event {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 12px;
+        padding: 6px 8px;
+        margin: 5px 0;
+      }
+      .event .label {
+        margin-left: 10px;
+        font-size: 10px;
+      }
     }
   </style>
- </head>
- <body>
-  <div class="header-container">
-   <div class="legend">
-    <strong>
-     Legend
-    </strong>
-    <div>
-     <span style="background:#FBBF24;">
-     </span>
-     S-A: 90,000+
-    </div>
-    <div>
-     <span style="background:#34D399;">
-     </span>
-     B: 30,000–89,999
-    </div>
-    <div>
-     <span style="background:#6EE7B7;">
-     </span>
-     C-D: 2,000–29,999
-    </div>
-    <div>
-     <span style="background:#FED7AA;">
-     </span>
-     PH: PH Hosts – Free for all
-    </div>
-   </div>
-   <h1>
-    Bigo Event Calendar – August 2025
-   </h1>
-  </div>
-  <div class="weekday-header">
-   <div>
-    Mon
-   </div>
-   <div>
-    Tue
-   </div>
-   <div>
-    Wed
-   </div>
-   <div>
-    Thu
-   </div>
-   <div>
-    Fri
-   </div>
-   <div>
-    Sat
-   </div>
-   <div>
-    Sun
-   </div>
-  </div>
-  <div class="calendar">
-   <div class="day">
-   </div>
-   <div class="day">
-   </div>
-   <div class="day">
-   </div>
-   <div class="day">
-   </div>
-   <div class="day">
-    <div class="date">
-     1 August
-    </div>
-    <a class="event tier-s" href="https://activity.bigo.tv/live/act/act_16907/index.html?id=70153">
-     Mystic Glory Pt. 1
-     <span class="label">
-      S-A
-     </span>
-    </a>
-    <a class="event tier-s" href="https://activity.bigo.tv/live/act/act_16907/index.html?id=70049">
-     Early Bird Rush
-     <span class="label">
-      S-A
-     </span>
-    </a>
-    <a class="event tier-s" href="https://activity.bigo.tv/live/act/act_16907/index.html?id=69743">
-     Host Shine Overseas
-     <span class="label">
-      S-A
-     </span>
-    </a>
-    <a class="event tier-b" href="https://activity.bigo.tv/live/act/act_16907/index.html?id=69660">
-     Daily Ladder Challenge
-     <span class="label">
-      B-D
-     </span>
-    </a>
-    <a class="event tier-c" href="https://activity.bigo.tv/live/act/act_16907/index.html?id=69658">
-     QuickStart Rush
-     <span class="label">
-      C-D
-     </span>
-    </a>
-    <a class="event tier-c" href="https://activity.bigo.tv/live/act/act_16907/index.html?id=70119">
-     Almost There Bonus
-     <span class="label">
-      C-D
-     </span>
-    </a>
-   </div>
-   <div class="day">
-    <div class="date">
-     2 August
-    </div>
-    <a class="event tier-s" href="https://activity.bigo.tv/live/act/act_16907/index.html?id=70153">
-     Mystic Glory Pt. 1
-     <span class="label">
-      S-A
-     </span>
-    </a>
-    <a class="event tier-s" href="https://activity.bigo.tv/live/act/act_16907/index.html?id=70049">
-     Early Bird Rush
-     <span class="label">
-      S-A
-     </span>
-    </a>
-    <a class="event tier-s" href="https://activity.bigo.tv/live/act/act_16907/index.html?id=69743">
-     Host Shine Overseas
-     <span class="label">
-      S-A
-     </span>
-    </a>
-    <a class="event tier-b" href="https://activity.bigo.tv/live/act/act_16907/index.html?id=69660">
-     Daily Ladder Challenge
-     <span class="label">
-      B-D
-     </span>
-    </a>
-    <a class="event tier-c" href="https://activity.bigo.tv/live/act/act_16907/index.html?id=69658">
-     QuickStart Rush
-     <span class="label">
-      C-D
-     </span>
-    </a>
-    <a class="event tier-c" href="https://activity.bigo.tv/live/act/act_16907/index.html?id=70119">
-     Almost There Bonus
-     <span class="label">
-      C-D
-     </span>
-    </a>
-   </div>
-   <div class="day">
-    <div class="date">
-     3 August
-    </div>
-    <a class="event tier-s" href="https://activity.bigo.tv/live/act/act_16907/index.html?id=70153">
-     Mystic Glory Pt. 1
-     <span class="label">
-      S-A
-     </span>
-    </a>
-    <a class="event tier-s" href="https://activity.bigo.tv/live/act/act_16907/index.html?id=70049">
-     Early Bird Rush
-     <span class="label">
-      S-A
-     </span>
-    </a>
-    <a class="event tier-s" href="https://activity.bigo.tv/live/act/act_16907/index.html?id=69743">
-     Host Shine Overseas
-     <span class="label">
-      S-A
-     </span>
-    </a>
-    <a class="event tier-b" href="https://activity.bigo.tv/live/act/act_16907/index.html?id=69660">
-     Daily Ladder Challenge
-     <span class="label">
-      B-D
-     </span>
-    </a>
-    <a class="event tier-c" href="https://activity.bigo.tv/live/act/act_16907/index.html?id=69658">
-     QuickStart Rush
-     <span class="label">
-      C-D
-     </span>
-    </a>
-    <a class="event tier-c" href="https://activity.bigo.tv/live/act/act_16907/index.html?id=70119">
-     Almost There Bonus
-     <span class="label">
-      C-D
-     </span>
-    </a>
-   </div>
-   <div class="day">
-    <div class="date">
-     4 August
-    </div>
-    <a class="event tier-s" href="https://activity.bigo.tv/live/act/act_16907/index.html?id=70153">
-     Mystic Glory Pt. 1
-     <span class="label">
-      S-A
-     </span>
-    </a>
-    <a class="event tier-s" href="https://activity.bigo.tv/live/act/act_16907/index.html?id=70049">
-     Early Bird Rush
-     <span class="label">
-      S-A
-     </span>
-    </a>
-    <a class="event tier-s" href="https://activity.bigo.tv/live/act/act_16907/index.html?id=69743">
-     Host Shine Overseas
-     <span class="label">
-      S-A
-     </span>
-    </a>
-    <a class="event tier-b" href="https://activity.bigo.tv/live/act/act_16907/index.html?id=69660">
-     Daily Ladder Challenge
-     <span class="label">
-      B-D
-     </span>
-    </a>
-    <a class="event tier-c" href="https://activity.bigo.tv/live/act/act_16907/index.html?id=69658">
-     QuickStart Rush
-     <span class="label">
-      C-D
-     </span>
-    </a>
-    <a class="event tier-c" href="https://activity.bigo.tv/live/act/act_16907/index.html?id=70119">
-     Almost There Bonus
-     <span class="label">
-      C-D
-     </span>
-    </a>
-   </div>
-   <div class="day">
-    <div class="date">
-     5 August
-    </div>
-    <a class="event tier-s" href="https://activity.bigo.tv/live/act/act_16907/index.html?id=70153">
-     Mystic Glory Pt. 1
-     <span class="label">
-      S-A
-     </span>
-    </a>
-    <a class="event tier-s" href="https://activity.bigo.tv/live/act/act_16907/index.html?id=70153">
-     Mystic Glory Pt. 2
-     <span class="label">
-      S-A
-     </span>
-    </a>
-    <a class="event tier-s" href="https://activity.bigo.tv/live/act/act_16907/index.html?id=69743">
-     Host Shine Overseas
-     <span class="label">
-      S-A
-     </span>
-    </a>
-    <a class="event tier-b" href="https://activity.bigo.tv/live/act/act_16907/index.html?id=69660">
-     Daily Ladder Challenge
-     <span class="label">
-      B-D
-     </span>
-    </a>
-    <a class="event tier-c" href="https://activity.bigo.tv/live/act/act_16907/index.html?id=69658">
-     QuickStart Rush
-     <span class="label">
-      C-D
-     </span>
-    </a>
-    <a class="event tier-c" href="https://activity.bigo.tv/live/act/act_16907/index.html?id=70119">
-     Almost There Bonus
-     <span class="label">
-      C-D
-     </span>
-    </a>
-   </div>
-   <div class="day">
-    <div class="date">
-     6 August
-    </div>
-    <a class="event tier-s" href="https://activity.bigo.tv/live/act/act_16907/index.html?id=70153">
-     Mystic Glory Pt. 1
-     <span class="label">
-      S-A
-     </span>
-    </a>
-    <a class="event tier-s" href="https://activity.bigo.tv/live/act/act_16907/index.html?id=70153">
-     Mystic Glory Pt. 2
-     <span class="label">
-      S-A
-     </span>
-    </a>
-    <a class="event tier-s" href="https://activity.bigo.tv/live/act/act_16907/index.html?id=69743">
-     Host Shine Overseas
-     <span class="label">
-      S-A
-     </span>
-    </a>
-    <a class="event tier-b" href="https://activity.bigo.tv/live/act/act_16907/index.html?id=69660">
-     Daily Ladder Challenge
-     <span class="label">
-      B-D
-     </span>
-    </a>
-    <a class="event tier-c" href="https://activity.bigo.tv/live/act/act_16907/index.html?id=69658">
-     QuickStart Rush
-     <span class="label">
-      C-D
-     </span>
-    </a>
-    <a class="event tier-c" href="https://activity.bigo.tv/live/act/act_16907/index.html?id=70119">
-     Almost There Bonus
-     <span class="label">
-      C-D
-     </span>
-    </a>
-   </div>
-   <div class="day">
-    <div class="date">
-     7 August
-    </div>
-    <a class="event tier-s" href="https://activity.bigo.tv/live/act/act_16907/index.html?id=70153">
-     Mystic Glory Pt. 1
-     <span class="label">
-      S-A
-     </span>
-    </a>
-    <a class="event tier-s" href="https://activity.bigo.tv/live/act/act_16907/index.html?id=70153">
-     Mystic Glory Pt. 2
-     <span class="label">
-      S-A
-     </span>
-    </a>
-    <a class="event tier-s" href="https://activity.bigo.tv/live/act/act_16907/index.html?id=69743">
-     Host Shine Overseas
-     <span class="label">
-      S-A
-     </span>
-    </a>
-    <a class="event tier-b" href="https://activity.bigo.tv/live/act/act_16907/index.html?id=69660">
-     Daily Ladder Challenge
-     <span class="label">
-      B-D
-     </span>
-    </a>
-    <a class="event tier-c" href="https://activity.bigo.tv/live/act/act_16907/index.html?id=69658">
-     QuickStart Rush
-     <span class="label">
-      C-D
-     </span>
-    </a>
-    <a class="event tier-c" href="https://activity.bigo.tv/live/act/act_16907/index.html?id=70119">
-     Almost There Bonus
-     <span class="label">
-      C-D
-     </span>
-    </a>
-   </div>
-   <div class="day">
-    <div class="date">
-     8 August
-    </div>
-    <a class="event tier-s" href="https://activity.bigo.tv/live/act/act_16907/index.html?id=70153">
-     Mystic Glory Pt. 1
-     <span class="label">
-      S-A
-     </span>
-    </a>
-    <a class="event tier-s" href="https://activity.bigo.tv/live/act/act_16907/index.html?id=70153">
-     Mystic Glory Pt. 2
-     <span class="label">
-      S-A
-     </span>
-    </a>
-    <a class="event tier-s" href="https://activity.bigo.tv/live/act/act_16907/index.html?id=69743">
-     Host Shine Overseas
-     <span class="label">
-      S-A
-     </span>
-    </a>
-    <a class="event tier-b" href="https://activity.bigo.tv/live/act/act_16907/index.html?id=69660">
-     Daily Ladder Challenge
-     <span class="label">
-      B-D
-     </span>
-    </a>
-    <a class="event tier-c" href="https://activity.bigo.tv/live/act/act_16907/index.html?id=69658">
-     QuickStart Rush
-     <span class="label">
-      C-D
-     </span>
-    </a>
-    <a class="event tier-c" href="https://activity.bigo.tv/live/act/act_16907/index.html?id=70119">
-     Almost There Bonus
-     <span class="label">
-      C-D
-     </span>
-    </a>
-   </div>
-   <div class="day">
-    <div class="date">
-     9 August
-    </div>
-    <a class="event tier-s" href="https://activity.bigo.tv/live/act/act_16907/index.html?id=70153">
-     Mystic Glory Pt. 1
-     <span class="label">
-      S-A
-     </span>
-    </a>
-    <a class="event tier-s" href="https://activity.bigo.tv/live/act/act_16907/index.html?id=70153">
-     Mystic Glory Pt. 2
-     <span class="label">
-      S-A
-     </span>
-    </a>
-    <a class="event tier-s" href="https://activity.bigo.tv/live/act/act_16907/index.html?id=69743">
-     Host Shine Overseas
-     <span class="label">
-      S-A
-     </span>
-    </a>
-    <a class="event tier-b" href="https://activity.bigo.tv/live/act/act_16907/index.html?id=69660">
-     Daily Ladder Challenge
-     <span class="label">
-      B-D
-     </span>
-    </a>
-    <a class="event tier-c" href="https://activity.bigo.tv/live/act/act_16907/index.html?id=69658">
-     QuickStart Rush
-     <span class="label">
-      C-D
-     </span>
-    </a>
-    <a class="event tier-c" href="https://activity.bigo.tv/live/act/act_16907/index.html?id=70119">
-     Almost There Bonus
-     <span class="label">
-      C-D
-     </span>
-    </a>
-   </div>
-   <div class="day">
-    <div class="date">
-     10 August
-    </div>
-    <a class="event tier-s" href="https://activity.bigo.tv/live/act/act_16907/index.html?id=70153">
-     Mystic Glory Pt. 1
-     <span class="label">
-      S-A
-     </span>
-    </a>
-    <a class="event tier-s" href="https://activity.bigo.tv/live/act/act_16907/index.html?id=70153">
-     Mystic Glory Pt. 2
-     <span class="label">
-      S-A
-     </span>
-    </a>
-    <a class="event tier-s" href="https://activity.bigo.tv/live/act/act_16907/index.html?id=69743">
-     Host Shine Overseas
-     <span class="label">
-      S-A
-     </span>
-    </a>
-    <a class="event tier-b" href="https://activity.bigo.tv/live/act/act_16907/index.html?id=69660">
-     Daily Ladder Challenge
-     <span class="label">
-      B-D
-     </span>
-    </a>
-    <a class="event tier-c" href="https://activity.bigo.tv/live/act/act_16907/index.html?id=69658">
-     QuickStart Rush
-     <span class="label">
-      C-D
-     </span>
-    </a>
-    <a class="event tier-c" href="https://activity.bigo.tv/live/act/act_16907/index.html?id=70119">
-     Almost There Bonus
-     <span class="label">
-      C-D
-     </span>
-    </a>
-   </div>
-   <div class="day">
-    <div class="date">
-     11 August
-    </div>
-    <a class="event tier-s" href="https://activity.bigo.tv/live/act/act_16907/index.html?id=70153">
-     Mystic Glory Pt. 1
-     <span class="label">
-      S-A
-     </span>
-    </a>
-    <a class="event tier-s" href="https://activity.bigo.tv/live/act/act_16907/index.html?id=69743">
-     Host Shine Overseas
-     <span class="label">
-      S-A
-     </span>
-    </a>
-    <a class="event tier-b" href="https://activity.bigo.tv/live/act/act_16907/index.html?id=69660">
-     Daily Ladder Challenge
-     <span class="label">
-      B-D
-     </span>
-    </a>
-    <a class="event tier-c" href="https://activity.bigo.tv/live/act/act_16907/index.html?id=70119">
-     Almost There Bonus
-     <span class="label">
-      C-D
-     </span>
-    </a>
-   </div>
-   <div class="day">
-    <div class="date">
-     12 August
-    </div>
-    <a class="event tier-s" href="https://activity.bigo.tv/live/act/act_16907/index.html?id=70153">
-     Mystic Glory Pt. 1
-     <span class="label">
-      S-A
-     </span>
-    </a>
-    <a class="event tier-s" href="https://activity.bigo.tv/live/act/act_16907/index.html?id=69743">
-     Host Shine Overseas
-     <span class="label">
-      S-A
-     </span>
-    </a>
-    <a class="event tier-b" href="https://activity.bigo.tv/live/act/act_16907/index.html?id=69660">
-     Daily Ladder Challenge
-     <span class="label">
-      B-D
-     </span>
-    </a>
-    <a class="event tier-c" href="https://activity.bigo.tv/live/act/act_16907/index.html?id=70119">
-     Almost There Bonus
-     <span class="label">
-      C-D
-     </span>
-    </a>
-   </div>
-   <div class="day">
-    <div class="date">
-     13 August
-    </div>
-    <a class="event tier-s" href="https://activity.bigo.tv/live/act/act_16907/index.html?id=70153">
-     Mystic Glory Pt. 1
-     <span class="label">
-      S-A
-     </span>
-    </a>
-    <a class="event tier-s" href="https://activity.bigo.tv/live/act/act_16907/index.html?id=69743">
-     Host Shine Overseas
-     <span class="label">
-      S-A
-     </span>
-    </a>
-    <a class="event tier-b" href="https://activity.bigo.tv/live/act/act_16907/index.html?id=69660">
-     Daily Ladder Challenge
-     <span class="label">
-      B-D
-     </span>
-    </a>
-    <a class="event tier-c" href="https://activity.bigo.tv/live/act/act_16907/index.html?id=70119">
-     Almost There Bonus
-     <span class="label">
-      C-D
-     </span>
-    </a>
-   </div>
-   <div class="day">
-    <div class="date">
-     14 August
-    </div>
-    <a class="event tier-s" href="https://activity.bigo.tv/live/act/act_16907/index.html?id=70153">
-     Mystic Glory Pt. 1
-     <span class="label">
-      S-A
-     </span>
-    </a>
-    <a class="event tier-s" href="https://activity.bigo.tv/live/act/act_16907/index.html?id=69743">
-     Host Shine Overseas
-     <span class="label">
-      S-A
-     </span>
-    </a>
-    <a class="event tier-b" href="https://activity.bigo.tv/live/act/act_16907/index.html?id=69660">
-     Daily Ladder Challenge
-     <span class="label">
-      B-D
-     </span>
-    </a>
-    <a class="event tier-c" href="https://activity.bigo.tv/live/act/act_16907/index.html?id=70119">
-     Almost There Bonus
-     <span class="label">
-      C-D
-     </span>
-    </a>
-   </div>
-   <div class="day">
-    <div class="date">
-     15 August
-    </div>
-    <a class="event tier-s" href="https://activity.bigo.tv/live/act/act_16907/index.html?id=70153">
-     Mystic Glory Pt. 1
-     <span class="label">
-      S-A
-     </span>
-    </a>
-    <a class="event tier-s" href="https://activity.bigo.tv/live/act/act_16907/index.html?id=69743">
-     Host Shine Overseas
-     <span class="label">
-      S-A
-     </span>
-    </a>
-    <a class="event tier-b" href="https://activity.bigo.tv/live/act/act_16907/index.html?id=69660">
-     Daily Ladder Challenge
-     <span class="label">
-      B-D
-     </span>
-    </a>
-    <a class="event tier-c" href="https://activity.bigo.tv/live/act/act_16907/index.html?id=70119">
-     Almost There Bonus
-     <span class="label">
-      C-D
-     </span>
-    </a>
-   </div>
-   <div class="day">
-    <div class="date">
-     16 August
-    </div>
-    <a class="event tier-s" href="https://activity.bigo.tv/live/act/act_16907/index.html?id=70153">
-     Mystic Glory Pt. 1
-     <span class="label">
-      S-A
-     </span>
-    </a>
-    <a class="event tier-s" href="https://activity.bigo.tv/live/act/act_16907/index.html?id=69743">
-     Host Shine Overseas
-     <span class="label">
-      S-A
-     </span>
-    </a>
-    <a class="event tier-b" href="https://activity.bigo.tv/live/act/act_16907/index.html?id=69660">
-     Daily Ladder Challenge
-     <span class="label">
-      B-D
-     </span>
-    </a>
-    <a class="event tier-c" href="https://activity.bigo.tv/live/act/act_16907/index.html?id=70119">
-     Almost There Bonus
-     <span class="label">
-      C-D
-     </span>
-    </a>
-   </div>
-   <div class="day">
-    <div class="date">
-     17 August
-    </div>
-    <a class="event tier-s" href="https://activity.bigo.tv/live/act/act_16907/index.html?id=70153">
-     Mystic Glory Pt. 1
-     <span class="label">
-      S-A
-     </span>
-    </a>
-    <a class="event tier-s" href="https://activity.bigo.tv/live/act/act_16907/index.html?id=69743">
-     Host Shine Overseas
-     <span class="label">
-      S-A
-     </span>
-    </a>
-    <a class="event tier-b" href="https://activity.bigo.tv/live/act/act_16907/index.html?id=69660">
-     Daily Ladder Challenge
-     <span class="label">
-      B-D
-     </span>
-    </a>
-    <a class="event tier-c" href="https://activity.bigo.tv/live/act/act_16907/index.html?id=70119">
-     Almost There Bonus
-     <span class="label">
-      C-D
-     </span>
-    </a>
-   </div>
-   <div class="day">
-    <div class="date">
-     18 August
-    </div>
-    <a class="event tier-s" href="https://activity.bigo.tv/live/act/act_16907/index.html?id=70153">
-     Mystic Glory Pt. 1
-     <span class="label">
-      S-A
-     </span>
-    </a>
-    <a class="event tier-s" href="https://activity.bigo.tv/live/act/act_16907/index.html?id=69743">
-     Host Shine Overseas
-     <span class="label">
-      S-A
-     </span>
-    </a>
-    <a class="event tier-b" href="https://activity.bigo.tv/live/act/act_16907/index.html?id=69660">
-     Daily Ladder Challenge
-     <span class="label">
-      B-D
-     </span>
-    </a>
-    <a class="event tier-c" href="https://activity.bigo.tv/live/act/act_16907/index.html?id=70119">
-     Almost There Bonus
-     <span class="label">
-      C-D
-     </span>
-    </a>
-   </div>
-   <div class="day">
-    <div class="date">
-     19 August
-    </div>
-    <a class="event tier-s" href="https://activity.bigo.tv/live/act/act_16907/index.html?id=70153">
-     Mystic Glory Pt. 1
-     <span class="label">
-      S-A
-     </span>
-    </a>
-    <a class="event tier-s" href="https://activity.bigo.tv/live/act/act_16907/index.html?id=69743">
-     Host Shine Overseas
-     <span class="label">
-      S-A
-     </span>
-    </a>
-    <a class="event tier-b" href="https://activity.bigo.tv/live/act/act_16907/index.html?id=69660">
-     Daily Ladder Challenge
-     <span class="label">
-      B-D
-     </span>
-    </a>
-    <a class="event tier-c" href="https://activity.bigo.tv/live/act/act_16907/index.html?id=70119">
-     Almost There Bonus
-     <span class="label">
-      C-D
-     </span>
-    </a>
-   </div>
-   <div class="day">
-    <div class="date">
-     20 August
-    </div>
-    <a class="event tier-s" href="https://activity.bigo.tv/live/act/act_16907/index.html?id=70153">
-     Mystic Glory Pt. 1
-     <span class="label">
-      S-A
-     </span>
-    </a>
-    <a class="event tier-s" href="https://activity.bigo.tv/live/act/act_16907/index.html?id=69743">
-     Host Shine Overseas
-     <span class="label">
-      S-A
-     </span>
-    </a>
-    <a class="event tier-b" href="https://activity.bigo.tv/live/act/act_16907/index.html?id=69660">
-     Daily Ladder Challenge
-     <span class="label">
-      B-D
-     </span>
-    </a>
-    <a class="event tier-c" href="https://activity.bigo.tv/live/act/act_16907/index.html?id=70119">
-     Almost There Bonus
-     <span class="label">
-      C-D
-     </span>
-    </a>
-   </div>
-   <div class="day">
-    <div class="date">
-     21 August
-    </div>
-    <a class="event tier-s" href="https://activity.bigo.tv/live/act/act_16907/index.html?id=69743">
-     Host Shine Overseas
-     <span class="label">
-      S-A
-     </span>
-    </a>
-    <a class="event tier-b" href="https://activity.bigo.tv/live/act/act_16907/index.html?id=69660">
-     Daily Ladder Challenge
-     <span class="label">
-      B-D
-     </span>
-    </a>
-    <a class="event tier-c" href="https://activity.bigo.tv/live/act/act_16907/index.html?id=70119">
-     Almost There Bonus
-     <span class="label">
-      C-D
-     </span>
-    </a>
-   </div>
-   <div class="day">
-    <div class="date">
-     22 August
-    </div>
-    <a class="event tier-s" href="https://activity.bigo.tv/live/act/act_16907/index.html?id=69743">
-     Host Shine Overseas
-     <span class="label">
-      S-A
-     </span>
-    </a>
-    <a class="event tier-b" href="https://activity.bigo.tv/live/act/act_16907/index.html?id=69660">
-     Daily Ladder Challenge
-     <span class="label">
-      B-D
-     </span>
-    </a>
-    <a class="event tier-c" href="https://activity.bigo.tv/live/act/act_16907/index.html?id=70119">
-     Almost There Bonus
-     <span class="label">
-      C-D
-     </span>
-    </a>
-   </div>
-   <div class="day">
-    <div class="date">
-     23 August
-    </div>
-    <a class="event tier-s" href="https://activity.bigo.tv/live/act/act_16907/index.html?id=69743">
-     Host Shine Overseas
-     <span class="label">
-      S-A
-     </span>
-    </a>
-    <a class="event tier-b" href="https://activity.bigo.tv/live/act/act_16907/index.html?id=69660">
-     Daily Ladder Challenge
-     <span class="label">
-      B-D
-     </span>
-    </a>
-    <a class="event tier-c" href="https://activity.bigo.tv/live/act/act_16907/index.html?id=70119">
-     Almost There Bonus
-     <span class="label">
-      C-D
-     </span>
-    </a>
-   </div>
-   <div class="day">
-    <div class="date">
-     24 August
-    </div>
-    <a class="event tier-s" href="https://activity.bigo.tv/live/act/act_16907/index.html?id=69743">
-     Host Shine Overseas
-     <span class="label">
-      S-A
-     </span>
-    </a>
-    <a class="event tier-b" href="https://activity.bigo.tv/live/act/act_16907/index.html?id=69660">
-     Daily Ladder Challenge
-     <span class="label">
-      B-D
-     </span>
-    </a>
-    <a class="event tier-c" href="https://activity.bigo.tv/live/act/act_16907/index.html?id=70119">
-     Almost There Bonus
-     <span class="label">
-      C-D
-     </span>
-    </a>
-   </div>
-   <div class="day">
-    <div class="date">
-     25 August
-    </div>
-    <a class="event tier-s" href="https://activity.bigo.tv/live/act/act_16907/index.html?id=69743">
-     Host Shine Overseas
-     <span class="label">
-      S-A
-     </span>
-    </a>
-    <a class="event tier-b" href="https://activity.bigo.tv/live/act/act_16907/index.html?id=69660">
-     Daily Ladder Challenge
-     <span class="label">
-      B-D
-     </span>
-    </a>
-    <a class="event tier-c" href="https://activity.bigo.tv/live/act/act_16907/index.html?id=70119">
-     Almost There Bonus
-     <span class="label">
-      C-D
-     </span>
-    </a>
-   </div>
-   <div class="day">
-    <div class="date">
-     26 August
-    </div>
-    <a class="event tier-s" href="https://activity.bigo.tv/live/act/act_16907/index.html?id=69743">
-     Host Shine Overseas
-     <span class="label">
-      S-A
-     </span>
-    </a>
-    <a class="event tier-b" href="https://activity.bigo.tv/live/act/act_16907/index.html?id=69660">
-     Daily Ladder Challenge
-     <span class="label">
-      B-D
-     </span>
-    </a>
-    <a class="event tier-c" href="https://activity.bigo.tv/live/act/act_16907/index.html?id=70119">
-     Almost There Bonus
-     <span class="label">
-      C-D
-     </span>
-    </a>
-   </div>
-   <div class="day">
-    <div class="date">
-     27 August
-    </div>
-    <a class="event tier-s" href="https://activity.bigo.tv/live/act/act_16907/index.html?id=69743">
-     Host Shine Overseas
-     <span class="label">
-      S-A
-     </span>
-    </a>
-    <a class="event tier-b" href="https://activity.bigo.tv/live/act/act_16907/index.html?id=69660">
-     Daily Ladder Challenge
-     <span class="label">
-      B-D
-     </span>
-    </a>
-    <a class="event tier-c" href="https://activity.bigo.tv/live/act/act_16907/index.html?id=70119">
-     Almost There Bonus
-     <span class="label">
-      C-D
-     </span>
-    </a>
-   </div>
-   <div class="day">
-    <div class="date">
-     28 August
-    </div>
-    <a class="event tier-s" href="https://activity.bigo.tv/live/act/act_16907/index.html?id=69743">
-     Host Shine Overseas
-     <span class="label">
-      S-A
-     </span>
-    </a>
-    <a class="event tier-b" href="https://activity.bigo.tv/live/act/act_16907/index.html?id=69660">
-     Daily Ladder Challenge
-     <span class="label">
-      B-D
-     </span>
-    </a>
-    <a class="event tier-c" href="https://activity.bigo.tv/live/act/act_16907/index.html?id=70119">
-     Almost There Bonus
-     <span class="label">
-      C-D
-     </span>
-    </a>
-   </div>
-   <div class="day">
-    <div class="date">
-     29 August
-    </div>
-    <a class="event tier-s" href="https://activity.bigo.tv/live/act/act_16907/index.html?id=69743">
-     Host Shine Overseas
-     <span class="label">
-      S-A
-     </span>
-    </a>
-    <a class="event tier-b" href="https://activity.bigo.tv/live/act/act_16907/index.html?id=69660">
-     Daily Ladder Challenge
-     <span class="label">
-      B-D
-     </span>
-    </a>
-    <a class="event tier-c" href="https://activity.bigo.tv/live/act/act_16907/index.html?id=70119">
-     Almost There Bonus
-     <span class="label">
-      C-D
-     </span>
-    </a>
-   </div>
-   <div class="day">
-    <div class="date">
-     30 August
-    </div>
-    <a class="event tier-s" href="https://activity.bigo.tv/live/act/act_16907/index.html?id=69743">
-     Host Shine Overseas
-     <span class="label">
-      S-A
-     </span>
-    </a>
-    <a class="event tier-b" href="https://activity.bigo.tv/live/act/act_16907/index.html?id=69660">
-     Daily Ladder Challenge
-     <span class="label">
-      B-D
-     </span>
-    </a>
-    <a class="event tier-c" href="https://activity.bigo.tv/live/act/act_16907/index.html?id=70119">
-     Almost There Bonus
-     <span class="label">
-      C-D
-     </span>
-    </a>
-   </div>
-  </div>
- </body>
+</head>
+<body>
+<div class="header-container">
+<div class="legend"><div><span style="background-color:#FBBF24;"></span>S-A Tier</div><div><span style="background-color:#34D399;"></span>B Tier</div><div><span style="background-color:#6EE7B7;"></span>C-D Tier</div><div><span style="background-color:#FED7AA;"></span>PH – PH Hosts</div></div>
+<h1>Bigo Event Calendar – August 2025</h1>
+</div>
+<div class="weekday-header">
+<div>Monday</div><div>Tuesday</div><div>Wednesday</div><div>Thursday</div><div>Friday</div><div>Saturday</div><div>Sunday</div>
+</div>
+<div class="calendar">
+<div class="day"></div>
+<div class="day"></div>
+<div class="day"></div>
+<div class="day"></div>
+<div class="day"><div class="date">1 August</div><a class="event tier-s" href="https://bigopheventscalendar.github.io/bigohostevents/redirect.html?to=https%3A%2F%2Factivity.bigo.tv%2Flive%2Fact%2Fact_16907%2Findex.html%3Fid%3D70153">Mystic Glory Pt. 1 <span class="label">S-A</span></a><a class="event tier-s" href="https://bigopheventscalendar.github.io/bigohostevents/redirect.html?to=https%3A%2F%2Factivity.bigo.tv%2Flive%2Fact%2Fact_16907%2Findex.html%3Fid%3D70049">Early Bird Rush <span class="label">S-A</span></a><a class="event tier-b" href="https://bigopheventscalendar.github.io/bigohostevents/redirect.html?to=https%3A%2F%2Factivity.bigo.tv%2Flive%2Fact%2Fact_16907%2Findex.html%3Fid%3D69660">Daily Ladder Challenge <span class="label">B-D</span></a><a class="event tier-c" href="https://bigopheventscalendar.github.io/bigohostevents/redirect.html?to=https%3A%2F%2Factivity.bigo.tv%2Flive%2Fact%2Fact_16907%2Findex.html%3Fid%3D69658">QuickStart Rush <span class="label">C-D</span></a><a class="event tier-c" href="https://bigopheventscalendar.github.io/bigohostevents/redirect.html?to=https%3A%2F%2Factivity.bigo.tv%2Flive%2Fact%2Fact_16907%2Findex.html%3Fid%3D70119">Almost There Bonus <span class="label">C-D</span></a><a class="event tier-ph" href="https://bigopheventscalendar.github.io/bigohostevents/redirect.html?to=https%3A%2F%2Factivity.bigo.tv%2Flive%2Fact%2Fact_16907%2Findex.html%3Fid%3D69743" style="margin-top: 12px;">Host Shine Overseas <span class="label">PH</span></a></div>
+<div class="day"><div class="date">2 August</div><a class="event tier-s" href="https://bigopheventscalendar.github.io/bigohostevents/redirect.html?to=https%3A%2F%2Factivity.bigo.tv%2Flive%2Fact%2Fact_16907%2Findex.html%3Fid%3D70153">Mystic Glory Pt. 1 <span class="label">S-A</span></a><a class="event tier-s" href="https://bigopheventscalendar.github.io/bigohostevents/redirect.html?to=https%3A%2F%2Factivity.bigo.tv%2Flive%2Fact%2Fact_16907%2Findex.html%3Fid%3D70049">Early Bird Rush <span class="label">S-A</span></a><a class="event tier-b" href="https://bigopheventscalendar.github.io/bigohostevents/redirect.html?to=https%3A%2F%2Factivity.bigo.tv%2Flive%2Fact%2Fact_16907%2Findex.html%3Fid%3D69660">Daily Ladder Challenge <span class="label">B-D</span></a><a class="event tier-c" href="https://bigopheventscalendar.github.io/bigohostevents/redirect.html?to=https%3A%2F%2Factivity.bigo.tv%2Flive%2Fact%2Fact_16907%2Findex.html%3Fid%3D69658">QuickStart Rush <span class="label">C-D</span></a><a class="event tier-c" href="https://bigopheventscalendar.github.io/bigohostevents/redirect.html?to=https%3A%2F%2Factivity.bigo.tv%2Flive%2Fact%2Fact_16907%2Findex.html%3Fid%3D70119">Almost There Bonus <span class="label">C-D</span></a><a class="event tier-ph" href="https://bigopheventscalendar.github.io/bigohostevents/redirect.html?to=https%3A%2F%2Factivity.bigo.tv%2Flive%2Fact%2Fact_16907%2Findex.html%3Fid%3D69743" style="margin-top: 12px;">Host Shine Overseas <span class="label">PH</span></a></div>
+<div class="day"><div class="date">3 August</div><a class="event tier-s" href="https://bigopheventscalendar.github.io/bigohostevents/redirect.html?to=https%3A%2F%2Factivity.bigo.tv%2Flive%2Fact%2Fact_16907%2Findex.html%3Fid%3D70153">Mystic Glory Pt. 1 <span class="label">S-A</span></a><a class="event tier-s" href="https://bigopheventscalendar.github.io/bigohostevents/redirect.html?to=https%3A%2F%2Factivity.bigo.tv%2Flive%2Fact%2Fact_16907%2Findex.html%3Fid%3D70049">Early Bird Rush <span class="label">S-A</span></a><a class="event tier-b" href="https://bigopheventscalendar.github.io/bigohostevents/redirect.html?to=https%3A%2F%2Factivity.bigo.tv%2Flive%2Fact%2Fact_16907%2Findex.html%3Fid%3D69660">Daily Ladder Challenge <span class="label">B-D</span></a><a class="event tier-c" href="https://bigopheventscalendar.github.io/bigohostevents/redirect.html?to=https%3A%2F%2Factivity.bigo.tv%2Flive%2Fact%2Fact_16907%2Findex.html%3Fid%3D69658">QuickStart Rush <span class="label">C-D</span></a><a class="event tier-c" href="https://bigopheventscalendar.github.io/bigohostevents/redirect.html?to=https%3A%2F%2Factivity.bigo.tv%2Flive%2Fact%2Fact_16907%2Findex.html%3Fid%3D70119">Almost There Bonus <span class="label">C-D</span></a><a class="event tier-ph" href="https://bigopheventscalendar.github.io/bigohostevents/redirect.html?to=https%3A%2F%2Factivity.bigo.tv%2Flive%2Fact%2Fact_16907%2Findex.html%3Fid%3D69743" style="margin-top: 12px;">Host Shine Overseas <span class="label">PH</span></a></div>
+<div class="day"><div class="date">4 August</div><a class="event tier-s" href="https://bigopheventscalendar.github.io/bigohostevents/redirect.html?to=https%3A%2F%2Factivity.bigo.tv%2Flive%2Fact%2Fact_16907%2Findex.html%3Fid%3D70153">Mystic Glory Pt. 1 <span class="label">S-A</span></a><a class="event tier-s" href="https://bigopheventscalendar.github.io/bigohostevents/redirect.html?to=https%3A%2F%2Factivity.bigo.tv%2Flive%2Fact%2Fact_16907%2Findex.html%3Fid%3D70049">Early Bird Rush <span class="label">S-A</span></a><a class="event tier-b" href="https://bigopheventscalendar.github.io/bigohostevents/redirect.html?to=https%3A%2F%2Factivity.bigo.tv%2Flive%2Fact%2Fact_16907%2Findex.html%3Fid%3D69660">Daily Ladder Challenge <span class="label">B-D</span></a><a class="event tier-c" href="https://bigopheventscalendar.github.io/bigohostevents/redirect.html?to=https%3A%2F%2Factivity.bigo.tv%2Flive%2Fact%2Fact_16907%2Findex.html%3Fid%3D69658">QuickStart Rush <span class="label">C-D</span></a><a class="event tier-c" href="https://bigopheventscalendar.github.io/bigohostevents/redirect.html?to=https%3A%2F%2Factivity.bigo.tv%2Flive%2Fact%2Fact_16907%2Findex.html%3Fid%3D70119">Almost There Bonus <span class="label">C-D</span></a><a class="event tier-ph" href="https://bigopheventscalendar.github.io/bigohostevents/redirect.html?to=https%3A%2F%2Factivity.bigo.tv%2Flive%2Fact%2Fact_16907%2Findex.html%3Fid%3D69743" style="margin-top: 12px;">Host Shine Overseas <span class="label">PH</span></a></div>
+<div class="day"><div class="date">5 August</div><a class="event tier-s" href="https://bigopheventscalendar.github.io/bigohostevents/redirect.html?to=https%3A%2F%2Factivity.bigo.tv%2Flive%2Fact%2Fact_16907%2Findex.html%3Fid%3D70153">Mystic Glory Pt. 1 <span class="label">S-A</span></a><a class="event tier-s" href="https://bigopheventscalendar.github.io/bigohostevents/redirect.html?to=https%3A%2F%2Factivity.bigo.tv%2Flive%2Fact%2Fact_16907%2Findex.html%3Fid%3D70153">Mystic Glory Pt. 2 <span class="label">S-A</span></a><a class="event tier-b" href="https://bigopheventscalendar.github.io/bigohostevents/redirect.html?to=https%3A%2F%2Factivity.bigo.tv%2Flive%2Fact%2Fact_16907%2Findex.html%3Fid%3D69660">Daily Ladder Challenge <span class="label">B-D</span></a><a class="event tier-c" href="https://bigopheventscalendar.github.io/bigohostevents/redirect.html?to=https%3A%2F%2Factivity.bigo.tv%2Flive%2Fact%2Fact_16907%2Findex.html%3Fid%3D69658">QuickStart Rush <span class="label">C-D</span></a><a class="event tier-c" href="https://bigopheventscalendar.github.io/bigohostevents/redirect.html?to=https%3A%2F%2Factivity.bigo.tv%2Flive%2Fact%2Fact_16907%2Findex.html%3Fid%3D70119">Almost There Bonus <span class="label">C-D</span></a><a class="event tier-ph" href="https://bigopheventscalendar.github.io/bigohostevents/redirect.html?to=https%3A%2F%2Factivity.bigo.tv%2Flive%2Fact%2Fact_16907%2Findex.html%3Fid%3D69743" style="margin-top: 12px;">Host Shine Overseas <span class="label">PH</span></a></div>
+<div class="day"><div class="date">6 August</div><a class="event tier-s" href="https://bigopheventscalendar.github.io/bigohostevents/redirect.html?to=https%3A%2F%2Factivity.bigo.tv%2Flive%2Fact%2Fact_16907%2Findex.html%3Fid%3D70153">Mystic Glory Pt. 1 <span class="label">S-A</span></a><a class="event tier-s" href="https://bigopheventscalendar.github.io/bigohostevents/redirect.html?to=https%3A%2F%2Factivity.bigo.tv%2Flive%2Fact%2Fact_16907%2Findex.html%3Fid%3D70153">Mystic Glory Pt. 2 <span class="label">S-A</span></a><a class="event tier-b" href="https://bigopheventscalendar.github.io/bigohostevents/redirect.html?to=https%3A%2F%2Factivity.bigo.tv%2Flive%2Fact%2Fact_16907%2Findex.html%3Fid%3D69660">Daily Ladder Challenge <span class="label">B-D</span></a><a class="event tier-c" href="https://bigopheventscalendar.github.io/bigohostevents/redirect.html?to=https%3A%2F%2Factivity.bigo.tv%2Flive%2Fact%2Fact_16907%2Findex.html%3Fid%3D69658">QuickStart Rush <span class="label">C-D</span></a><a class="event tier-c" href="https://bigopheventscalendar.github.io/bigohostevents/redirect.html?to=https%3A%2F%2Factivity.bigo.tv%2Flive%2Fact%2Fact_16907%2Findex.html%3Fid%3D70119">Almost There Bonus <span class="label">C-D</span></a><a class="event tier-ph" href="https://bigopheventscalendar.github.io/bigohostevents/redirect.html?to=https%3A%2F%2Factivity.bigo.tv%2Flive%2Fact%2Fact_16907%2Findex.html%3Fid%3D69743" style="margin-top: 12px;">Host Shine Overseas <span class="label">PH</span></a></div>
+<div class="day"><div class="date">7 August</div><a class="event tier-s" href="https://bigopheventscalendar.github.io/bigohostevents/redirect.html?to=https%3A%2F%2Factivity.bigo.tv%2Flive%2Fact%2Fact_16907%2Findex.html%3Fid%3D70153">Mystic Glory Pt. 1 <span class="label">S-A</span></a><a class="event tier-s" href="https://bigopheventscalendar.github.io/bigohostevents/redirect.html?to=https%3A%2F%2Factivity.bigo.tv%2Flive%2Fact%2Fact_16907%2Findex.html%3Fid%3D70153">Mystic Glory Pt. 2 <span class="label">S-A</span></a><a class="event tier-b" href="https://bigopheventscalendar.github.io/bigohostevents/redirect.html?to=https%3A%2F%2Factivity.bigo.tv%2Flive%2Fact%2Fact_16907%2Findex.html%3Fid%3D69660">Daily Ladder Challenge <span class="label">B-D</span></a><a class="event tier-c" href="https://bigopheventscalendar.github.io/bigohostevents/redirect.html?to=https%3A%2F%2Factivity.bigo.tv%2Flive%2Fact%2Fact_16907%2Findex.html%3Fid%3D69658">QuickStart Rush <span class="label">C-D</span></a><a class="event tier-c" href="https://bigopheventscalendar.github.io/bigohostevents/redirect.html?to=https%3A%2F%2Factivity.bigo.tv%2Flive%2Fact%2Fact_16907%2Findex.html%3Fid%3D70119">Almost There Bonus <span class="label">C-D</span></a><a class="event tier-ph" href="https://bigopheventscalendar.github.io/bigohostevents/redirect.html?to=https%3A%2F%2Factivity.bigo.tv%2Flive%2Fact%2Fact_16907%2Findex.html%3Fid%3D69743" style="margin-top: 12px;">Host Shine Overseas <span class="label">PH</span></a></div>
+<div class="day"><div class="date">8 August</div><a class="event tier-s" href="https://bigopheventscalendar.github.io/bigohostevents/redirect.html?to=https%3A%2F%2Factivity.bigo.tv%2Flive%2Fact%2Fact_16907%2Findex.html%3Fid%3D70153">Mystic Glory Pt. 1 <span class="label">S-A</span></a><a class="event tier-s" href="https://bigopheventscalendar.github.io/bigohostevents/redirect.html?to=https%3A%2F%2Factivity.bigo.tv%2Flive%2Fact%2Fact_16907%2Findex.html%3Fid%3D70153">Mystic Glory Pt. 2 <span class="label">S-A</span></a><a class="event tier-b" href="https://bigopheventscalendar.github.io/bigohostevents/redirect.html?to=https%3A%2F%2Factivity.bigo.tv%2Flive%2Fact%2Fact_16907%2Findex.html%3Fid%3D69660">Daily Ladder Challenge <span class="label">B-D</span></a><a class="event tier-c" href="https://bigopheventscalendar.github.io/bigohostevents/redirect.html?to=https%3A%2F%2Factivity.bigo.tv%2Flive%2Fact%2Fact_16907%2Findex.html%3Fid%3D69658">QuickStart Rush <span class="label">C-D</span></a><a class="event tier-c" href="https://bigopheventscalendar.github.io/bigohostevents/redirect.html?to=https%3A%2F%2Factivity.bigo.tv%2Flive%2Fact%2Fact_16907%2Findex.html%3Fid%3D70119">Almost There Bonus <span class="label">C-D</span></a><a class="event tier-ph" href="https://bigopheventscalendar.github.io/bigohostevents/redirect.html?to=https%3A%2F%2Factivity.bigo.tv%2Flive%2Fact%2Fact_16907%2Findex.html%3Fid%3D69743" style="margin-top: 12px;">Host Shine Overseas <span class="label">PH</span></a></div>
+<div class="day"><div class="date">9 August</div><a class="event tier-s" href="https://bigopheventscalendar.github.io/bigohostevents/redirect.html?to=https%3A%2F%2Factivity.bigo.tv%2Flive%2Fact%2Fact_16907%2Findex.html%3Fid%3D70153">Mystic Glory Pt. 1 <span class="label">S-A</span></a><a class="event tier-s" href="https://bigopheventscalendar.github.io/bigohostevents/redirect.html?to=https%3A%2F%2Factivity.bigo.tv%2Flive%2Fact%2Fact_16907%2Findex.html%3Fid%3D70153">Mystic Glory Pt. 2 <span class="label">S-A</span></a><a class="event tier-b" href="https://bigopheventscalendar.github.io/bigohostevents/redirect.html?to=https%3A%2F%2Factivity.bigo.tv%2Flive%2Fact%2Fact_16907%2Findex.html%3Fid%3D69660">Daily Ladder Challenge <span class="label">B-D</span></a><a class="event tier-c" href="https://bigopheventscalendar.github.io/bigohostevents/redirect.html?to=https%3A%2F%2Factivity.bigo.tv%2Flive%2Fact%2Fact_16907%2Findex.html%3Fid%3D69658">QuickStart Rush <span class="label">C-D</span></a><a class="event tier-c" href="https://bigopheventscalendar.github.io/bigohostevents/redirect.html?to=https%3A%2F%2Factivity.bigo.tv%2Flive%2Fact%2Fact_16907%2Findex.html%3Fid%3D70119">Almost There Bonus <span class="label">C-D</span></a><a class="event tier-ph" href="https://bigopheventscalendar.github.io/bigohostevents/redirect.html?to=https%3A%2F%2Factivity.bigo.tv%2Flive%2Fact%2Fact_16907%2Findex.html%3Fid%3D69743" style="margin-top: 12px;">Host Shine Overseas <span class="label">PH</span></a></div>
+<div class="day"><div class="date">10 August</div><a class="event tier-s" href="https://bigopheventscalendar.github.io/bigohostevents/redirect.html?to=https%3A%2F%2Factivity.bigo.tv%2Flive%2Fact%2Fact_16907%2Findex.html%3Fid%3D70153">Mystic Glory Pt. 1 <span class="label">S-A</span></a><a class="event tier-s" href="https://bigopheventscalendar.github.io/bigohostevents/redirect.html?to=https%3A%2F%2Factivity.bigo.tv%2Flive%2Fact%2Fact_16907%2Findex.html%3Fid%3D70153">Mystic Glory Pt. 2 <span class="label">S-A</span></a><a class="event tier-b" href="https://bigopheventscalendar.github.io/bigohostevents/redirect.html?to=https%3A%2F%2Factivity.bigo.tv%2Flive%2Fact%2Fact_16907%2Findex.html%3Fid%3D69660">Daily Ladder Challenge <span class="label">B-D</span></a><a class="event tier-c" href="https://bigopheventscalendar.github.io/bigohostevents/redirect.html?to=https%3A%2F%2Factivity.bigo.tv%2Flive%2Fact%2Fact_16907%2Findex.html%3Fid%3D69658">QuickStart Rush <span class="label">C-D</span></a><a class="event tier-c" href="https://bigopheventscalendar.github.io/bigohostevents/redirect.html?to=https%3A%2F%2Factivity.bigo.tv%2Flive%2Fact%2Fact_16907%2Findex.html%3Fid%3D70119">Almost There Bonus <span class="label">C-D</span></a><a class="event tier-ph" href="https://bigopheventscalendar.github.io/bigohostevents/redirect.html?to=https%3A%2F%2Factivity.bigo.tv%2Flive%2Fact%2Fact_16907%2Findex.html%3Fid%3D69743" style="margin-top: 12px;">Host Shine Overseas <span class="label">PH</span></a></div>
+<div class="day"><div class="date">11 August</div><a class="event tier-s" href="https://bigopheventscalendar.github.io/bigohostevents/redirect.html?to=https%3A%2F%2Factivity.bigo.tv%2Flive%2Fact%2Fact_16907%2Findex.html%3Fid%3D70153">Mystic Glory Pt. 1 <span class="label">S-A</span></a><a class="event tier-b" href="https://bigopheventscalendar.github.io/bigohostevents/redirect.html?to=https%3A%2F%2Factivity.bigo.tv%2Flive%2Fact%2Fact_16907%2Findex.html%3Fid%3D69660">Daily Ladder Challenge <span class="label">B-D</span></a><a class="event tier-c" href="https://bigopheventscalendar.github.io/bigohostevents/redirect.html?to=https%3A%2F%2Factivity.bigo.tv%2Flive%2Fact%2Fact_16907%2Findex.html%3Fid%3D70119">Almost There Bonus <span class="label">C-D</span></a><a class="event tier-ph" href="https://bigopheventscalendar.github.io/bigohostevents/redirect.html?to=https%3A%2F%2Factivity.bigo.tv%2Flive%2Fact%2Fact_16907%2Findex.html%3Fid%3D69743" style="margin-top: 12px;">Host Shine Overseas <span class="label">PH</span></a></div>
+<div class="day"><div class="date">12 August</div><a class="event tier-s" href="https://bigopheventscalendar.github.io/bigohostevents/redirect.html?to=https%3A%2F%2Factivity.bigo.tv%2Flive%2Fact%2Fact_16907%2Findex.html%3Fid%3D70153">Mystic Glory Pt. 1 <span class="label">S-A</span></a><a class="event tier-b" href="https://bigopheventscalendar.github.io/bigohostevents/redirect.html?to=https%3A%2F%2Factivity.bigo.tv%2Flive%2Fact%2Fact_16907%2Findex.html%3Fid%3D69660">Daily Ladder Challenge <span class="label">B-D</span></a><a class="event tier-c" href="https://bigopheventscalendar.github.io/bigohostevents/redirect.html?to=https%3A%2F%2Factivity.bigo.tv%2Flive%2Fact%2Fact_16907%2Findex.html%3Fid%3D70119">Almost There Bonus <span class="label">C-D</span></a><a class="event tier-ph" href="https://bigopheventscalendar.github.io/bigohostevents/redirect.html?to=https%3A%2F%2Factivity.bigo.tv%2Flive%2Fact%2Fact_16907%2Findex.html%3Fid%3D69743" style="margin-top: 12px;">Host Shine Overseas <span class="label">PH</span></a></div>
+<div class="day"><div class="date">13 August</div><a class="event tier-s" href="https://bigopheventscalendar.github.io/bigohostevents/redirect.html?to=https%3A%2F%2Factivity.bigo.tv%2Flive%2Fact%2Fact_16907%2Findex.html%3Fid%3D70153">Mystic Glory Pt. 1 <span class="label">S-A</span></a><a class="event tier-b" href="https://bigopheventscalendar.github.io/bigohostevents/redirect.html?to=https%3A%2F%2Factivity.bigo.tv%2Flive%2Fact%2Fact_16907%2Findex.html%3Fid%3D69660">Daily Ladder Challenge <span class="label">B-D</span></a><a class="event tier-c" href="https://bigopheventscalendar.github.io/bigohostevents/redirect.html?to=https%3A%2F%2Factivity.bigo.tv%2Flive%2Fact%2Fact_16907%2Findex.html%3Fid%3D70119">Almost There Bonus <span class="label">C-D</span></a><a class="event tier-ph" href="https://bigopheventscalendar.github.io/bigohostevents/redirect.html?to=https%3A%2F%2Factivity.bigo.tv%2Flive%2Fact%2Fact_16907%2Findex.html%3Fid%3D69743" style="margin-top: 12px;">Host Shine Overseas <span class="label">PH</span></a></div>
+<div class="day"><div class="date">14 August</div><a class="event tier-s" href="https://bigopheventscalendar.github.io/bigohostevents/redirect.html?to=https%3A%2F%2Factivity.bigo.tv%2Flive%2Fact%2Fact_16907%2Findex.html%3Fid%3D70153">Mystic Glory Pt. 1 <span class="label">S-A</span></a><a class="event tier-b" href="https://bigopheventscalendar.github.io/bigohostevents/redirect.html?to=https%3A%2F%2Factivity.bigo.tv%2Flive%2Fact%2Fact_16907%2Findex.html%3Fid%3D69660">Daily Ladder Challenge <span class="label">B-D</span></a><a class="event tier-c" href="https://bigopheventscalendar.github.io/bigohostevents/redirect.html?to=https%3A%2F%2Factivity.bigo.tv%2Flive%2Fact%2Fact_16907%2Findex.html%3Fid%3D70119">Almost There Bonus <span class="label">C-D</span></a><a class="event tier-ph" href="https://bigopheventscalendar.github.io/bigohostevents/redirect.html?to=https%3A%2F%2Factivity.bigo.tv%2Flive%2Fact%2Fact_16907%2Findex.html%3Fid%3D69743" style="margin-top: 12px;">Host Shine Overseas <span class="label">PH</span></a></div>
+<div class="day"><div class="date">15 August</div><a class="event tier-s" href="https://bigopheventscalendar.github.io/bigohostevents/redirect.html?to=https%3A%2F%2Factivity.bigo.tv%2Flive%2Fact%2Fact_16907%2Findex.html%3Fid%3D70153">Mystic Glory Pt. 1 <span class="label">S-A</span></a><a class="event tier-b" href="https://bigopheventscalendar.github.io/bigohostevents/redirect.html?to=https%3A%2F%2Factivity.bigo.tv%2Flive%2Fact%2Fact_16907%2Findex.html%3Fid%3D69660">Daily Ladder Challenge <span class="label">B-D</span></a><a class="event tier-c" href="https://bigopheventscalendar.github.io/bigohostevents/redirect.html?to=https%3A%2F%2Factivity.bigo.tv%2Flive%2Fact%2Fact_16907%2Findex.html%3Fid%3D70119">Almost There Bonus <span class="label">C-D</span></a><a class="event tier-ph" href="https://bigopheventscalendar.github.io/bigohostevents/redirect.html?to=https%3A%2F%2Factivity.bigo.tv%2Flive%2Fact%2Fact_16907%2Findex.html%3Fid%3D69743" style="margin-top: 12px;">Host Shine Overseas <span class="label">PH</span></a></div>
+<div class="day"><div class="date">16 August</div><a class="event tier-s" href="https://bigopheventscalendar.github.io/bigohostevents/redirect.html?to=https%3A%2F%2Factivity.bigo.tv%2Flive%2Fact%2Fact_16907%2Findex.html%3Fid%3D70153">Mystic Glory Pt. 1 <span class="label">S-A</span></a><a class="event tier-b" href="https://bigopheventscalendar.github.io/bigohostevents/redirect.html?to=https%3A%2F%2Factivity.bigo.tv%2Flive%2Fact%2Fact_16907%2Findex.html%3Fid%3D69660">Daily Ladder Challenge <span class="label">B-D</span></a><a class="event tier-c" href="https://bigopheventscalendar.github.io/bigohostevents/redirect.html?to=https%3A%2F%2Factivity.bigo.tv%2Flive%2Fact%2Fact_16907%2Findex.html%3Fid%3D70119">Almost There Bonus <span class="label">C-D</span></a><a class="event tier-ph" href="https://bigopheventscalendar.github.io/bigohostevents/redirect.html?to=https%3A%2F%2Factivity.bigo.tv%2Flive%2Fact%2Fact_16907%2Findex.html%3Fid%3D69743" style="margin-top: 12px;">Host Shine Overseas <span class="label">PH</span></a></div>
+<div class="day"><div class="date">17 August</div><a class="event tier-s" href="https://bigopheventscalendar.github.io/bigohostevents/redirect.html?to=https%3A%2F%2Factivity.bigo.tv%2Flive%2Fact%2Fact_16907%2Findex.html%3Fid%3D70153">Mystic Glory Pt. 1 <span class="label">S-A</span></a><a class="event tier-b" href="https://bigopheventscalendar.github.io/bigohostevents/redirect.html?to=https%3A%2F%2Factivity.bigo.tv%2Flive%2Fact%2Fact_16907%2Findex.html%3Fid%3D69660">Daily Ladder Challenge <span class="label">B-D</span></a><a class="event tier-c" href="https://bigopheventscalendar.github.io/bigohostevents/redirect.html?to=https%3A%2F%2Factivity.bigo.tv%2Flive%2Fact%2Fact_16907%2Findex.html%3Fid%3D70119">Almost There Bonus <span class="label">C-D</span></a><a class="event tier-ph" href="https://bigopheventscalendar.github.io/bigohostevents/redirect.html?to=https%3A%2F%2Factivity.bigo.tv%2Flive%2Fact%2Fact_16907%2Findex.html%3Fid%3D69743" style="margin-top: 12px;">Host Shine Overseas <span class="label">PH</span></a></div>
+<div class="day"><div class="date">18 August</div><a class="event tier-s" href="https://bigopheventscalendar.github.io/bigohostevents/redirect.html?to=https%3A%2F%2Factivity.bigo.tv%2Flive%2Fact%2Fact_16907%2Findex.html%3Fid%3D70153">Mystic Glory Pt. 1 <span class="label">S-A</span></a><a class="event tier-b" href="https://bigopheventscalendar.github.io/bigohostevents/redirect.html?to=https%3A%2F%2Factivity.bigo.tv%2Flive%2Fact%2Fact_16907%2Findex.html%3Fid%3D69660">Daily Ladder Challenge <span class="label">B-D</span></a><a class="event tier-c" href="https://bigopheventscalendar.github.io/bigohostevents/redirect.html?to=https%3A%2F%2Factivity.bigo.tv%2Flive%2Fact%2Fact_16907%2Findex.html%3Fid%3D70119">Almost There Bonus <span class="label">C-D</span></a><a class="event tier-ph" href="https://bigopheventscalendar.github.io/bigohostevents/redirect.html?to=https%3A%2F%2Factivity.bigo.tv%2Flive%2Fact%2Fact_16907%2Findex.html%3Fid%3D69743" style="margin-top: 12px;">Host Shine Overseas <span class="label">PH</span></a></div>
+<div class="day"><div class="date">19 August</div><a class="event tier-s" href="https://bigopheventscalendar.github.io/bigohostevents/redirect.html?to=https%3A%2F%2Factivity.bigo.tv%2Flive%2Fact%2Fact_16907%2Findex.html%3Fid%3D70153">Mystic Glory Pt. 1 <span class="label">S-A</span></a><a class="event tier-b" href="https://bigopheventscalendar.github.io/bigohostevents/redirect.html?to=https%3A%2F%2Factivity.bigo.tv%2Flive%2Fact%2Fact_16907%2Findex.html%3Fid%3D69660">Daily Ladder Challenge <span class="label">B-D</span></a><a class="event tier-c" href="https://bigopheventscalendar.github.io/bigohostevents/redirect.html?to=https%3A%2F%2Factivity.bigo.tv%2Flive%2Fact%2Fact_16907%2Findex.html%3Fid%3D70119">Almost There Bonus <span class="label">C-D</span></a><a class="event tier-ph" href="https://bigopheventscalendar.github.io/bigohostevents/redirect.html?to=https%3A%2F%2Factivity.bigo.tv%2Flive%2Fact%2Fact_16907%2Findex.html%3Fid%3D69743" style="margin-top: 12px;">Host Shine Overseas <span class="label">PH</span></a></div>
+<div class="day"><div class="date">20 August</div><a class="event tier-s" href="https://bigopheventscalendar.github.io/bigohostevents/redirect.html?to=https%3A%2F%2Factivity.bigo.tv%2Flive%2Fact%2Fact_16907%2Findex.html%3Fid%3D70153">Mystic Glory Pt. 1 <span class="label">S-A</span></a><a class="event tier-b" href="https://bigopheventscalendar.github.io/bigohostevents/redirect.html?to=https%3A%2F%2Factivity.bigo.tv%2Flive%2Fact%2Fact_16907%2Findex.html%3Fid%3D69660">Daily Ladder Challenge <span class="label">B-D</span></a><a class="event tier-c" href="https://bigopheventscalendar.github.io/bigohostevents/redirect.html?to=https%3A%2F%2Factivity.bigo.tv%2Flive%2Fact%2Fact_16907%2Findex.html%3Fid%3D70119">Almost There Bonus <span class="label">C-D</span></a><a class="event tier-ph" href="https://bigopheventscalendar.github.io/bigohostevents/redirect.html?to=https%3A%2F%2Factivity.bigo.tv%2Flive%2Fact%2Fact_16907%2Findex.html%3Fid%3D69743" style="margin-top: 12px;">Host Shine Overseas <span class="label">PH</span></a></div>
+<div class="day"><div class="date">21 August</div><a class="event tier-b" href="https://bigopheventscalendar.github.io/bigohostevents/redirect.html?to=https%3A%2F%2Factivity.bigo.tv%2Flive%2Fact%2Fact_16907%2Findex.html%3Fid%3D69660">Daily Ladder Challenge <span class="label">B-D</span></a><a class="event tier-c" href="https://bigopheventscalendar.github.io/bigohostevents/redirect.html?to=https%3A%2F%2Factivity.bigo.tv%2Flive%2Fact%2Fact_16907%2Findex.html%3Fid%3D70119">Almost There Bonus <span class="label">C-D</span></a><a class="event tier-ph" href="https://bigopheventscalendar.github.io/bigohostevents/redirect.html?to=https%3A%2F%2Factivity.bigo.tv%2Flive%2Fact%2Fact_16907%2Findex.html%3Fid%3D69743" style="margin-top: 12px;">Host Shine Overseas <span class="label">PH</span></a></div>
+<div class="day"><div class="date">22 August</div><a class="event tier-b" href="https://bigopheventscalendar.github.io/bigohostevents/redirect.html?to=https%3A%2F%2Factivity.bigo.tv%2Flive%2Fact%2Fact_16907%2Findex.html%3Fid%3D69660">Daily Ladder Challenge <span class="label">B-D</span></a><a class="event tier-c" href="https://bigopheventscalendar.github.io/bigohostevents/redirect.html?to=https%3A%2F%2Factivity.bigo.tv%2Flive%2Fact%2Fact_16907%2Findex.html%3Fid%3D70119">Almost There Bonus <span class="label">C-D</span></a><a class="event tier-ph" href="https://bigopheventscalendar.github.io/bigohostevents/redirect.html?to=https%3A%2F%2Factivity.bigo.tv%2Flive%2Fact%2Fact_16907%2Findex.html%3Fid%3D69743" style="margin-top: 12px;">Host Shine Overseas <span class="label">PH</span></a></div>
+<div class="day"><div class="date">23 August</div><a class="event tier-b" href="https://bigopheventscalendar.github.io/bigohostevents/redirect.html?to=https%3A%2F%2Factivity.bigo.tv%2Flive%2Fact%2Fact_16907%2Findex.html%3Fid%3D69660">Daily Ladder Challenge <span class="label">B-D</span></a><a class="event tier-c" href="https://bigopheventscalendar.github.io/bigohostevents/redirect.html?to=https%3A%2F%2Factivity.bigo.tv%2Flive%2Fact%2Fact_16907%2Findex.html%3Fid%3D70119">Almost There Bonus <span class="label">C-D</span></a><a class="event tier-ph" href="https://bigopheventscalendar.github.io/bigohostevents/redirect.html?to=https%3A%2F%2Factivity.bigo.tv%2Flive%2Fact%2Fact_16907%2Findex.html%3Fid%3D69743" style="margin-top: 12px;">Host Shine Overseas <span class="label">PH</span></a></div>
+<div class="day"><div class="date">24 August</div><a class="event tier-b" href="https://bigopheventscalendar.github.io/bigohostevents/redirect.html?to=https%3A%2F%2Factivity.bigo.tv%2Flive%2Fact%2Fact_16907%2Findex.html%3Fid%3D69660">Daily Ladder Challenge <span class="label">B-D</span></a><a class="event tier-c" href="https://bigopheventscalendar.github.io/bigohostevents/redirect.html?to=https%3A%2F%2Factivity.bigo.tv%2Flive%2Fact%2Fact_16907%2Findex.html%3Fid%3D70119">Almost There Bonus <span class="label">C-D</span></a><a class="event tier-ph" href="https://bigopheventscalendar.github.io/bigohostevents/redirect.html?to=https%3A%2F%2Factivity.bigo.tv%2Flive%2Fact%2Fact_16907%2Findex.html%3Fid%3D69743" style="margin-top: 12px;">Host Shine Overseas <span class="label">PH</span></a></div>
+<div class="day"><div class="date">25 August</div><a class="event tier-b" href="https://bigopheventscalendar.github.io/bigohostevents/redirect.html?to=https%3A%2F%2Factivity.bigo.tv%2Flive%2Fact%2Fact_16907%2Findex.html%3Fid%3D69660">Daily Ladder Challenge <span class="label">B-D</span></a><a class="event tier-c" href="https://bigopheventscalendar.github.io/bigohostevents/redirect.html?to=https%3A%2F%2Factivity.bigo.tv%2Flive%2Fact%2Fact_16907%2Findex.html%3Fid%3D70119">Almost There Bonus <span class="label">C-D</span></a><a class="event tier-ph" href="https://bigopheventscalendar.github.io/bigohostevents/redirect.html?to=https%3A%2F%2Factivity.bigo.tv%2Flive%2Fact%2Fact_16907%2Findex.html%3Fid%3D69743" style="margin-top: 12px;">Host Shine Overseas <span class="label">PH</span></a></div>
+<div class="day"><div class="date">26 August</div><a class="event tier-b" href="https://bigopheventscalendar.github.io/bigohostevents/redirect.html?to=https%3A%2F%2Factivity.bigo.tv%2Flive%2Fact%2Fact_16907%2Findex.html%3Fid%3D69660">Daily Ladder Challenge <span class="label">B-D</span></a><a class="event tier-c" href="https://bigopheventscalendar.github.io/bigohostevents/redirect.html?to=https%3A%2F%2Factivity.bigo.tv%2Flive%2Fact%2Fact_16907%2Findex.html%3Fid%3D70119">Almost There Bonus <span class="label">C-D</span></a><a class="event tier-ph" href="https://bigopheventscalendar.github.io/bigohostevents/redirect.html?to=https%3A%2F%2Factivity.bigo.tv%2Flive%2Fact%2Fact_16907%2Findex.html%3Fid%3D69743" style="margin-top: 12px;">Host Shine Overseas <span class="label">PH</span></a></div>
+<div class="day"><div class="date">27 August</div><a class="event tier-b" href="https://bigopheventscalendar.github.io/bigohostevents/redirect.html?to=https%3A%2F%2Factivity.bigo.tv%2Flive%2Fact%2Fact_16907%2Findex.html%3Fid%3D69660">Daily Ladder Challenge <span class="label">B-D</span></a><a class="event tier-c" href="https://bigopheventscalendar.github.io/bigohostevents/redirect.html?to=https%3A%2F%2Factivity.bigo.tv%2Flive%2Fact%2Fact_16907%2Findex.html%3Fid%3D70119">Almost There Bonus <span class="label">C-D</span></a><a class="event tier-ph" href="https://bigopheventscalendar.github.io/bigohostevents/redirect.html?to=https%3A%2F%2Factivity.bigo.tv%2Flive%2Fact%2Fact_16907%2Findex.html%3Fid%3D69743" style="margin-top: 12px;">Host Shine Overseas <span class="label">PH</span></a></div>
+<div class="day"><div class="date">28 August</div><a class="event tier-b" href="https://bigopheventscalendar.github.io/bigohostevents/redirect.html?to=https%3A%2F%2Factivity.bigo.tv%2Flive%2Fact%2Fact_16907%2Findex.html%3Fid%3D69660">Daily Ladder Challenge <span class="label">B-D</span></a><a class="event tier-c" href="https://bigopheventscalendar.github.io/bigohostevents/redirect.html?to=https%3A%2F%2Factivity.bigo.tv%2Flive%2Fact%2Fact_16907%2Findex.html%3Fid%3D70119">Almost There Bonus <span class="label">C-D</span></a><a class="event tier-ph" href="https://bigopheventscalendar.github.io/bigohostevents/redirect.html?to=https%3A%2F%2Factivity.bigo.tv%2Flive%2Fact%2Fact_16907%2Findex.html%3Fid%3D69743" style="margin-top: 12px;">Host Shine Overseas <span class="label">PH</span></a></div>
+<div class="day"><div class="date">29 August</div><a class="event tier-b" href="https://bigopheventscalendar.github.io/bigohostevents/redirect.html?to=https%3A%2F%2Factivity.bigo.tv%2Flive%2Fact%2Fact_16907%2Findex.html%3Fid%3D69660">Daily Ladder Challenge <span class="label">B-D</span></a><a class="event tier-c" href="https://bigopheventscalendar.github.io/bigohostevents/redirect.html?to=https%3A%2F%2Factivity.bigo.tv%2Flive%2Fact%2Fact_16907%2Findex.html%3Fid%3D70119">Almost There Bonus <span class="label">C-D</span></a><a class="event tier-ph" href="https://bigopheventscalendar.github.io/bigohostevents/redirect.html?to=https%3A%2F%2Factivity.bigo.tv%2Flive%2Fact%2Fact_16907%2Findex.html%3Fid%3D69743" style="margin-top: 12px;">Host Shine Overseas <span class="label">PH</span></a></div>
+<div class="day"><div class="date">30 August</div><a class="event tier-b" href="https://bigopheventscalendar.github.io/bigohostevents/redirect.html?to=https%3A%2F%2Factivity.bigo.tv%2Flive%2Fact%2Fact_16907%2Findex.html%3Fid%3D69660">Daily Ladder Challenge <span class="label">B-D</span></a><a class="event tier-c" href="https://bigopheventscalendar.github.io/bigohostevents/redirect.html?to=https%3A%2F%2Factivity.bigo.tv%2Flive%2Fact%2Fact_16907%2Findex.html%3Fid%3D70119">Almost There Bonus <span class="label">C-D</span></a><a class="event tier-ph" href="https://bigopheventscalendar.github.io/bigohostevents/redirect.html?to=https%3A%2F%2Factivity.bigo.tv%2Flive%2Fact%2Fact_16907%2Findex.html%3Fid%3D69743" style="margin-top: 12px;">Host Shine Overseas <span class="label">PH</span></a></div>
+</div>
+</body>
 </html>
